@@ -1,0 +1,84 @@
+---
+import Card from "./Card.astro";
+
+const cards = [
+    {
+        image: "/modernise-applications-image.jpg",
+        title: "Modernise Applications with Open-Source Software on Google Cloud",
+        text: "Digital transformation is a priority for organisations looking to become more agile. This means replacing older technology stacks with cloud and open-source technologies...",
+        href: "https://itcurated.com/Solving-For-Innovation/infrastructure-and-application-modernisation/modernize-applications-with-open-source-software-on-google-cloud/"
+    },
+    {
+        image: "/unified-data-cloud-image.jpg",
+        title: "Unified Data Cloud for Simplicity and Intelligence at Scale",
+        text: "A new decision point in data architecture has led industry leaders to choose Google's data cloud to accelerate digital transformation. Dig in further to see...",
+        href: "https://cloud.google.com/resources/idc-datacloud-study?hl=en"
+    },
+    {
+        image: "/executive-guide-image.jpg",
+        title: "The Executive’s Guide to Generative AI",
+        text: "Right now, only 15% of business and IT decision makers feel they have expert knowledge in the area of Generative AI. This comprehensive guide will...",
+        href: "https://inthecloud.withgoogle.com/executive-guide-getting-started-with-generative-ai/dl-cd.html?_ga=2.252977801.-1669785295.1710939471&_gac=1.194250207.1712246871.CjwKCAjwte-vBhBFEiwAQSv_xbsOfgF5cfC1Q6GCUBy1ZjzWEzq1mns2fQndDCAtDKkkxD5sXlhVCRoCEw8QAvD_BwE&_gl=1*bf704e*_ga*MTY2OTc4NTI5NS4xNzEwOTM5NDcx*_ga_WH2QY8WWF5*MTcxNDE1NDY4Mi4xMi4xLjE3MTQxNjA4NjEuMC4wLjA."
+    }
+];
+---
+
+<section class="card-section">
+    <div class="wrapper offset">
+        <h2>Executive Insights</h2>
+        <p class="subtitle">The latest news, best practices, and expert analyses for cloud, data, and digital
+            transformation
+            solutions to guide your decision making</p>
+    </div>
+    <div class="wrapper">
+        <div class="cards">
+            {cards.map((card) => (
+                    <Card href={card.href} image={card.image} title={card.title} text={card.text}/>
+            ))}
+        </div>
+    </div>
+</section>
+<style lang="scss">
+
+  .card-section {
+    margin-top: -60px;
+    margin-bottom: 100px;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .offset {
+    padding-left: 30px;
+  }
+
+  h2 {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 105%;
+    color: var(--blue);
+    margin-top: unset;
+    margin-bottom: 18px;
+  }
+
+  .subtitle {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 144%;
+    color: var(--mid-grey);
+    max-width: 596px;
+    margin: unset;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 35px;
+  }
+</style>

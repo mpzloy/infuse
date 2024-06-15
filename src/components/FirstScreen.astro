@@ -2,32 +2,87 @@
 
 ---
 
-<div>
-    <h1>
-        <span>Solving</span>
-        <span>for Innovation</span>
-    </h1>
-    <div class="sub-title">Your Hub for Daily Expert-Curated Cloud Insights</div>
-    <video autoplay loop muted>
-        <source src="/first-screen-video.mp4" type="video/mp4"/>
-    </video>
+<div class="first-section">
+    <div class="wrapper">
+        <div class="section-aside">
+            <h1>
+                <span>Solving</span><span>for Innovation</span>
+            </h1>
+            <div class="subtitle">Your Hub for Expert-Curated Cloud Insights</div>
+            <div class="section-images">
+                <figure><img src="/logo-itc.svg" alt="ITC logo"></figure>
+                <figure><img src="/logo-google.svg" alt="Google logo"></figure>
+            </div>
+        </div>
+        <figure class="section-video">
+            <video autoplay loop muted>
+                <source src="/first-screen-video.mp4" type="video/mp4"/>
+            </video>
+        </figure>
+    </div>
 </div>
 
 <style lang="scss">
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .first-section {
+    padding-left: 30px;
+  }
+
+  .section {
+    &-aside {
+      width: calc(100% - 622px - 62px);
+    }
+
+    &-images {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 20px;
+    }
+
+    &-video {
+      max-width: 622px;
+      line-height: 0;
+
+      video {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
   h1 {
     font-family: var(--font-family);
     font-weight: 700;
     font-size: 80px;
     line-height: 105%;
+    margin-top: 140px;
+    margin-bottom: 6px;
 
     span {
       &:first-child {
         color: var(--blue);
+        display: inline-block;
       }
 
       &:last-child {
         color: var(--green);
+        display: block;
       }
     }
+  }
+
+  .subtitle {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 46px;
   }
 </style>

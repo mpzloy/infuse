@@ -1,90 +1,93 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CardSlider from '../components/CardSlider.astro';
 import FirstScreen from "../components/FirstScreen.astro";
+import CardSection from "../components/CardSection.astro";
+import SectionContacts from "../components/SectionContacts.astro";
+import Slider from "../components/Slider.astro";
+
+const cards = [
+    {
+        image: "/modernise-applications-image.jpg",
+        title: "Modernise Applications with Open-Source Software on Google Cloud",
+        text: "Digital transformation is a priority for organisations looking to become more agile. This means replacing older technology stacks with cloud and open-source technologies...",
+        href: "https://itcurated.com/Solving-For-Innovation/infrastructure-and-application-modernisation/modernize-applications-with-open-source-software-on-google-cloud/"
+    },
+    {
+        image: "/unified-data-cloud-image.jpg",
+        title: "Unified Data Cloud for Simplicity and Intelligence at Scale",
+        text: "A new decision point in data architecture has led industry leaders to choose Google's data cloud to accelerate digital transformation. Dig in further to see...",
+        href: "https://cloud.google.com/resources/idc-datacloud-study?hl=en"
+    },
+    {
+        image: "/executive-guide-image.jpg",
+        title: "The Executive’s Guide to Generative AI",
+        text: "Right now, only 15% of business and IT decision makers feel they have expert knowledge in the area of Generative AI. This comprehensive guide will...",
+        href: "https://inthecloud.withgoogle.com/executive-guide-getting-started-with-generative-ai/dl-cd.html?_ga=2.252977801.-1669785295.1710939471&_gac=1.194250207.1712246871.CjwKCAjwte-vBhBFEiwAQSv_xbsOfgF5cfC1Q6GCUBy1ZjzWEzq1mns2fQndDCAtDKkkxD5sXlhVCRoCEw8QAvD_BwE&_gl=1*bf704e*_ga*MTY2OTc4NTI5NS4xNzEwOTM5NDcx*_ga_WH2QY8WWF5*MTcxNDE1NDY4Mi4xMi4xLjE3MTQxNjA4NjEuMC4wLjA."
+    }
+];
 ---
 
 <Layout title="Solving for Innovation">
-    <main>
+    <main class="main">
         <FirstScreen/>
+        <CardSection/>
+        <SectionContacts
+                title="We empower you with the best cloud solutions for your needs"
+                btnText="Contact sales"
+                btnLink="#"
+                videoUrl="/cloud-solution-1.mp4"
+                videoImg="/cloud-solution-image-1.jpg"
+        />
+        <section class="a">
+            <aside>
+                <div class="sidebar"></div>
+                <div class="sidebar s"></div>
+            </aside>
+            <div class="content">
+                <Slider glideClass="glide1" slides={cards}/>
+                <Slider glideClass="glide2" slides={cards}/>
+            </div>
+        </section>
 
-        <p class="instructions">
-            To get started, open the directory <code>src/pages</code> in your project.<br/>
-            <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-        </p>
-        <ul role="list" class="link-card-grid">
-            <CardSlider
-                    imgLink="/modernise-applications-image.jpg"
-                    title="Modernise Applications with Open-Source Software on Google Cloud"
-                    text="Digital transformation is a priority for organisations looking to become more agile. This means replacing older technology stacks with cloud and open-source technologies. Elevate your..."
-                    href="#"
-            />
-        </ul>
+
+        <SectionContacts
+                title="Find the best cloud solutions for your needs"
+                subtitle="Identify the right solutions to exceed your goals"
+                btnText="Contact sales"
+                btnLink="#"
+                videoUrl="/cloud-solution-2.mp4"
+                videoImg="/cloud-solution-image-1.jpg"
+        />
     </main>
 </Layout>
 
-<style>
-    main {
-        margin: auto;
-        padding: 1rem;
-        width: 800px;
-        max-width: calc(100% - 2rem);
-        color: white;
-        font-size: 20px;
-        line-height: 1.6;
+<style lang="scss">
+  .a {
+    display: flex;
+
+    aside {
+      width: 320px;
     }
 
-    .astro-a {
-        position: absolute;
-        top: -32px;
-        left: 50%;
-        transform: translatex(-50%);
-        width: 220px;
-        height: auto;
-        z-index: -1;
+    .sidebar {
+      min-height: 513px;
+      background-color: #434;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 50px;
     }
 
-    h1 {
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1;
-        text-align: center;
-        margin-bottom: 1em;
+    .s {
+      background-color: #484;
+      top: 60px;
     }
 
-    .text-gradient {
-        background-image: var(--accent-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 400%;
-        background-position: 0%;
+    .content {
+      width: calc(100% - 320px);
+      min-height: 1500px;
     }
-
-    .instructions {
-        margin-bottom: 2rem;
-        border: 1px solid rgba(var(--accent-light), 25%);
-        background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-        padding: 1.5rem;
-        border-radius: 8px;
-    }
-
-    .instructions code {
-        font-size: 0.8em;
-        font-weight: bold;
-        background: rgba(var(--accent-light), 12%);
-        color: rgb(var(--accent-light));
-        border-radius: 4px;
-        padding: 0.3em 0.4em;
-    }
-
-    .instructions strong {
-        color: rgb(var(--accent-light));
-    }
-
-    .link-card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-        gap: 2rem;
-        padding: 0;
-    }
+  }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+

@@ -1,0 +1,51 @@
+---
+import Card from "./Card.astro";
+let {glideClass, slides} = Astro.props;
+
+let slideClass = `glide ${glideClass}`
+---
+
+<div class={slideClass} id={glideClass}>
+    <div class="glide__track" data-glide-el="track">
+        <div class="glide__slides">
+            {slides.map(slide => (
+                    <Card
+                            title={slide.title}
+                            text={slide.text}
+                            image={slide.image}
+                            href={slide.href}
+                    />
+            ))}
+        </div>
+    </div>
+</div>
+
+<style>
+    .glide__slides {
+        white-space: unset;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const glideClass = document.querySelectorAll('.glide')
+
+        glideClass.forEach((glide) => {
+            const options = {
+                type: 'carousel',
+                perView: 2,
+                gap: 0,
+                // autoplay: 5000,
+                hoverpause: true,
+                animationDuration: 500,
+                animationTimingFunc: 'ease-in-out',
+                breakpoints: {
+                    768: {
+                        perView: 2
+                    }
+                }
+            };
+            new Glide(`.${glide.id}`, options).mount();
+        });
+    });
+</script>
