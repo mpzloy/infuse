@@ -23,16 +23,18 @@
 </div>
 
 <style lang="scss">
+
+  .first-section {
+    padding-left: 40px;
+  }
+
   .wrapper {
     display: flex;
     justify-content: space-between;
     width: 100%;
     max-width: 1240px;
-    margin: 0 auto;
-  }
-
-  .first-section {
     padding-left: 30px;
+    margin: 0 auto;
   }
 
   .section {
@@ -47,12 +49,28 @@
     }
 
     &-video {
-      max-width: 622px;
+      /*background-color: grey;*/
+      border-radius: 50%;
+      width: 100%;
+      max-width: 600px;
+      height: 600px;
       line-height: 0;
+      /*padding: 20px;*/
+      overflow: hidden;
+      position: relative;
 
       video {
-        max-width: 100%;
-        height: auto;
+        width: 650px;
+        height: 650px;
+        /*height: 100%;*/
+        /*object-fit: cover;*/
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: -30px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
       }
     }
   }

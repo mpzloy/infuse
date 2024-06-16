@@ -32,6 +32,10 @@ const {title, subtitle, btnLink, btnText, videoImg, videoUrl} = Astro.props;
   .section-contacts {
     padding-left: 40px;
     padding-right: 40px;
+
+    &:not(:last-child) {
+      margin-bottom: 100px;
+    }
   }
 
   .wrapper {

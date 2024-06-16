@@ -1,0 +1,114 @@
+---
+const {title, text, href, backgroundColor, backgroundImage, cardClass, color} = Astro.props;
+
+const bgc = `${backgroundColor}`;
+const bgi = `url(${backgroundImage})`;
+
+let cardClasses = `sidebar-card ${cardClass}`;
+---
+
+<div class={cardClasses}>
+    <strong class="title">{title}</strong>
+    <p class="text">{text}</p>
+    <a href={href}>Explore more insights
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M6 0L4.9425 1.0575L9.1275 5.25H0V6.75H9.1275L4.9425 10.9425L6 12L12 6L6 0Z" fill={color}/>
+        </svg>
+    </a>
+</div>
+
+<style lang="scss" define:vars={{bgc, color, bgi}}>
+  .sidebar-card {
+    background-color: var(--bgc);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    min-height: 570px;
+    overflow: hidden;
+    padding: 44px 30px 30px;
+    margin-bottom: 100px;
+    position: sticky;
+    top: 30px;
+
+    &.shrinking {
+      transform: scale(0.9);
+    }
+
+    &::before {
+      content: '';
+      background-image: var(--bgi);
+      background-repeat: no-repeat;
+      background-position: right bottom;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    &:nth-child(2) {
+      top: 40px;
+    }
+
+    &:nth-child(3) {
+      top: 50px;
+    }
+
+    &:nth-child(4) {
+      top: 60px;
+    }
+
+    &:nth-child(5) {
+      top: 70px;
+    }
+
+    &:nth-child(6) {
+      top: 80px;
+    }
+
+    strong {
+      font-family: var(--font-family);
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 120%;
+      color: white;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    p {
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 144%;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    a {
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 194%;
+      text-decoration: none;
+      color: var(--color);
+      background-color: white;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      padding: 9px 20px;
+      margin-top: auto;
+      position: relative;
+      z-index: 1;
+
+      svg {
+        margin-left: 5px;
+      }
+    }
+  }
+</style>
