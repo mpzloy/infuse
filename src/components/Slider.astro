@@ -55,10 +55,31 @@ let slideClass = `glide ${glideClass}`
                             before: 30,
                             after: 50
                         },
+                    },
+                    992: {
+                        gap: 20,
+                        perView: 1,
+                        peek: {
+                            before: 20,
+                            after: 80
+                        },
+                    },
+                    768: {
+                        gap: 20,
+                        perView: 1,
+                        peek: {
+                            before: 20,
+                            after: 20
+                        },
                     }
                 }
             };
-            new Glide(`.${glide.id}`, options).mount();
+           let slide =  new Glide(`.${glide.id}`, options).mount();
+
+            // if(window.innerWidth < 768) {
+            //     slide.destroy();
+            // }
         });
     });
+
 </script>

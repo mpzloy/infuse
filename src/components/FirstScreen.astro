@@ -5,14 +5,16 @@
 <div class="first-section">
     <div class="wrapper">
         <div class="section-aside">
-            <h1>
-                <span>Solving</span><span>for Innovation</span>
-            </h1>
+            <h1><span>Solving</span><span>for Innovation</span></h1>
             <div class="subtitle">Your Hub for Expert-Curated Cloud Insights</div>
             <div class="section-images">
                 <figure><img src="/logo-itc.svg" alt="ITC logo"></figure>
                 <figure><img src="/logo-google.svg" alt="Google logo"></figure>
             </div>
+
+            <h2>Executive Insights</h2>
+            <p class="text">The latest news, best practices, and expert analyses for cloud, data, and digital
+                transformation solutions to guide your decision making</p>
         </div>
         <figure class="section-video">
             <video autoplay loop muted>
@@ -26,6 +28,17 @@
 
   .first-section {
     padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (max-width: 1280px) {
+      padding-right: unset;
+    }
+    @media screen and (max-width: 992px) {
+      padding-left: 30px;
+    }
   }
 
   .wrapper {
@@ -33,44 +46,71 @@
     justify-content: space-between;
     width: 100%;
     max-width: 1240px;
-    padding-left: 30px;
     margin: 0 auto;
   }
 
   .section {
     &-aside {
-      width: calc(100% - 622px - 62px);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      width: 600px;
+      min-height: 710px;
+      padding-left: 30px;
+
+      @media screen and (max-width: 992px) {
+        width: 480px;
+      }
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        min-height: 600px;
+        padding-left: unset;
+      }
     }
 
     &-images {
       display: flex;
       gap: 32px;
       margin-bottom: 20px;
+
+      @media screen and (max-width: 576px) {
+        figure {
+          &:first-child {
+            width: 70px;
+          }
+
+          &:last-child {
+            width: 120px;
+          }
+        }
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
     }
 
     &-video {
-      /*background-color: grey;*/
-      border-radius: 50%;
-      width: 100%;
-      max-width: 600px;
-      height: 600px;
-      line-height: 0;
-      /*padding: 20px;*/
-      overflow: hidden;
-      position: relative;
+
+      @media screen and (max-width: 768px) {
+        position: absolute;
+        top: 130px;
+        left: 300px;
+        z-index: -1;
+      }
+      @media screen and (max-width: 576px) {
+        left: 200px;
+      }
 
       video {
         width: 650px;
         height: 650px;
-        /*height: 100%;*/
-        /*object-fit: cover;*/
-        border-radius: 50%;
-        position: absolute;
-        top: 0;
-        left: -30px;
-        right: 0;
-        bottom: 0;
-        margin: auto;
+
+        @media screen and (max-width: 768px) {
+          width: 500px;
+          height: 500px;
+        }
       }
     }
   }
@@ -82,6 +122,14 @@
     line-height: 105%;
     margin-top: 140px;
     margin-bottom: 6px;
+
+    @media screen and (max-width: 992px) {
+      font-size: 62px;
+      margin-top: 50px;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 48px;
+    }
 
     span {
       &:first-child {
@@ -102,5 +150,45 @@
     font-size: 20px;
     line-height: 30px;
     margin-bottom: 46px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+  }
+
+  h2 {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 105%;
+    color: var(--blue);
+    margin-top: auto;
+    margin-bottom: 18px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 25px;
+    }
+    @media screen and (max-width: 576px) {
+      max-width: 120px;
+    }
+  }
+
+  .text {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 144%;
+    color: var(--mid-grey);
+    margin: unset;
+
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+      max-width: 55%;
+    }
+
+    @media screen and (max-width: 576px) {
+      max-width: 60%;
+    }
   }
 </style>

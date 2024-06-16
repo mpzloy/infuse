@@ -1,22 +1,13 @@
 ---
-interface Props {
-    title: string;
-    subtitle: string;
-    btnLink: string;
-    btnText: string;
-    videoImg: string;
-    videoUrl: string;
-}
+const {title, subtitle, btnLink, btnText, videoImg, videoUrl, sectionClass} = Astro.props;
 
-const {title, subtitle, btnLink, btnText, videoImg, videoUrl} = Astro.props;
+let sectionClassList = sectionClass ? `section-contacts ${sectionClass}` : `section-contacts`;
 ---
 
-<section class="section-contacts">
+<section class={sectionClassList}>
     <div class="wrapper">
         <div class="content">
-            <h2>
-                <Fragment set:html={title}/>
-            </h2>
+            <h2><Fragment set:html={title}/></h2>
             {subtitle && <p>{subtitle}</p>}
             <a href={btnLink}>{btnText}</a>
         </div>
@@ -35,11 +26,14 @@ const {title, subtitle, btnLink, btnText, videoImg, videoUrl} = Astro.props;
 
     &:not(:last-child) {
       margin-bottom: 100px;
+
+      @media screen and (max-width: 768px) {
+        margin-bottom: 60px;
+      }
     }
   }
 
   .wrapper {
-    box-sizing: unset;
     background-color: #c1cdd3;
     border-radius: 10px;
     display: flex;
@@ -48,8 +42,16 @@ const {title, subtitle, btnLink, btnText, videoImg, videoUrl} = Astro.props;
     max-width: 1560px;
     min-height: 386px;
     margin: 0 auto;
+    padding-left: 30px;
+    padding-right: 30px;
     overflow: hidden;
     position: relative;
+
+    @media screen and (max-width: 992px) {
+      align-items: unset;
+      min-height: 430px;
+      padding-top: 40px;
+    }
   }
 
   .content {
@@ -69,6 +71,13 @@ const {title, subtitle, btnLink, btnText, videoImg, videoUrl} = Astro.props;
     max-width: 673px;
     margin-top: unset;
     margin-bottom: unset;
+
+    @media screen and (max-width: 992px) {
+      max-width: 100%;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 25px;
+    }
   }
 
   p {
@@ -103,14 +112,44 @@ const {title, subtitle, btnLink, btnText, videoImg, videoUrl} = Astro.props;
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
 
     video {
-      width: 100%;
+      width: 1560px;
       height: 100%;
       object-fit: cover;
+      transform: scale(1.1);
+
+      @media screen and (max-width: 1280px) {
+        position: absolute;
+        right: -35%;
+      }
+      @media screen and (max-width: 992px) {
+        transform: scale(.8);
+        top: 20%;
+        right: -450px;
+      }
+    }
+  }
+
+  .bottom {
+    .wrapper {
+      background-color: #a5bdca;
+    }
+    figure {
+      video {
+        transform: scale(1);
+        position: absolute;
+        right: -250px;
+
+        @media screen and (max-width: 1280px) {
+          transform: scale(.8);
+          top: 10%;
+          right: -400px;
+        }
+        @media screen and (max-width: 992px) {
+          transform: scale(.8);
+        }
+      }
     }
   }
 </style>

@@ -154,7 +154,7 @@ const sixthSliderItems = [
                             backgroundColor="#61c34a"
                             backgroundImage="/sidebar-card-bg-1.jpg"
                             color="#18730a"
-                            cardClass="card"
+                            cardClass="card-1"
                     />
                     <SidebarCard
                             title="Artificial Intelligence (AI)"
@@ -163,7 +163,7 @@ const sixthSliderItems = [
                             backgroundColor="#689cff"
                             backgroundImage="/sidebar-card-bg-2.jpg"
                             color="#2153af"
-                            cardClass="card"
+                            cardClass="card-2"
                     />
                     <SidebarCard
                             title="Databases"
@@ -172,7 +172,7 @@ const sixthSliderItems = [
                             backgroundColor="#ecb005"
                             backgroundImage="/sidebar-card-bg-3.jpg"
                             color="#9d5f01"
-                            cardClass="card"
+                            cardClass="card-3"
                     />
                     <SidebarCard
                             title="Smart Analytics"
@@ -181,16 +181,16 @@ const sixthSliderItems = [
                             backgroundColor="#61c34a"
                             backgroundImage="/sidebar-card-bg-4.jpg"
                             color="#18730a"
-                            cardClass="card"
+                            cardClass="card-4"
                     />
                     <SidebarCard
                             title="Productivity & Collaboration"
                             text="Empower your decision making and product updates with in-depth and actionable smart analytics"
                             href="#"
-                            backgroundColor="#ecb005"
+                            backgroundColor="#689cff"
                             backgroundImage="/sidebar-card-bg-5.jpg"
                             color="#2153af"
-                            cardClass="card"
+                            cardClass="card-5"
                     />
                     <SidebarCard
                             title="Security"
@@ -199,7 +199,7 @@ const sixthSliderItems = [
                             backgroundColor="#ecb005"
                             backgroundImage="/sidebar-card-bg-6.jpg"
                             color="#9d5f01"
-                            cardClass="card"
+                            cardClass="card-6"
                     />
                 </aside>
                 <div class="section-sliders-content">
@@ -225,7 +225,6 @@ const sixthSliderItems = [
             </div>
         </section>
 
-
         <SectionContacts
                 title="Find the best cloud solutions for your needs"
                 subtitle="Identify the right solutions to exceed your goals"
@@ -233,6 +232,7 @@ const sixthSliderItems = [
                 btnLink="#"
                 videoUrl="/cloud-solution-2.mp4"
                 videoImg="/cloud-solution-image-1.jpg"
+                sectionClass="bottom"
         />
     </main>
 </Layout>
@@ -245,6 +245,9 @@ const sixthSliderItems = [
     @media screen and (max-width: 1640px) {
       padding-right: unset;
     }
+    @media screen and (max-width: 992px) {
+      padding-left: unset;
+    }
 
     .wrapper {
       display: flex;
@@ -255,14 +258,27 @@ const sixthSliderItems = [
         max-width: 1440px;
         margin: 0 0 0 auto;
       }
+      @media screen and (max-width: 992px) {
+        flex-wrap: wrap;
+      }
     }
 
     &-aside {
       width: 320px;
+
+      @media screen and (max-width: 992px) {
+        display: contents;
+        width: 100%;
+      }
     }
 
     &-content {
       width: calc(100% - 320px);
+
+      @media screen and (max-width: 992px) {
+        display: contents;
+        width: 100%;
+      }
     }
 
     &-items {
@@ -270,6 +286,32 @@ const sixthSliderItems = [
       display: flex;
       align-items: flex-end;
       margin-bottom: 100px;
+
+      @media screen and (max-width: 992px) {
+        display: block;
+        width: 100%;
+        min-height: unset;
+        margin-bottom: 60px;
+
+        &:nth-child(1) {
+          order: 1;
+        }
+        &:nth-child(2) {
+          order: 2;
+        }
+        &:nth-child(3) {
+          order: 3;
+        }
+        &:nth-child(4) {
+          order: 4;
+        }
+        &:nth-child(5) {
+          order: 5;
+        }
+        &:nth-child(6) {
+          order: 6;
+        }
+      }
     }
   }
 </style>

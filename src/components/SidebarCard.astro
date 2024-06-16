@@ -31,8 +31,12 @@ let cardClasses = `sidebar-card ${cardClass}`;
     position: sticky;
     top: 30px;
 
-    &.shrinking {
-      transform: scale(0.9);
+    @media screen and (max-width: 992px) {
+      border-radius: unset;
+      width: 100%;
+      min-height: 345px;
+      margin-bottom: 60px;
+      position: relative;
     }
 
     &::before {
@@ -47,24 +51,26 @@ let cardClasses = `sidebar-card ${cardClass}`;
       bottom: 0;
     }
 
-    &:nth-child(2) {
-      top: 40px;
-    }
+    @media screen and (min-width: 991px) {
+      &:nth-child(2) {
+        top: 40px;
+      }
 
-    &:nth-child(3) {
-      top: 50px;
-    }
+      &:nth-child(3) {
+        top: 50px;
+      }
 
-    &:nth-child(4) {
-      top: 60px;
-    }
+      &:nth-child(4) {
+        top: 60px;
+      }
 
-    &:nth-child(5) {
-      top: 70px;
-    }
+      &:nth-child(5) {
+        top: 70px;
+      }
 
-    &:nth-child(6) {
-      top: 80px;
+      &:nth-child(6) {
+        top: 80px;
+      }
     }
 
     strong {
@@ -109,6 +115,27 @@ let cardClasses = `sidebar-card ${cardClass}`;
       svg {
         margin-left: 5px;
       }
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    .card-1 {
+      order: 1;
+    }
+    .card-2 {
+      order: 2;
+    }
+    .card-3 {
+      order: 3;
+    }
+    .card-4 {
+      order: 4;
+    }
+    .card-5 {
+      order: 5;
+    }
+    .card-6 {
+      order: 6;
     }
   }
 </style>
