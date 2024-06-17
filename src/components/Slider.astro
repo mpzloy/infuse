@@ -99,9 +99,9 @@ let slideClass = `glide ${glideClass}`
         initSlider();
 
         window.addEventListener('resize', function () {
-            if (window.matchMedia("(min-width: 768px)").matches && !isSliderInitialized) {
+            if (window.matchMedia("(min-width: 767px)").matches && !isSliderInitialized) {
                 initSlider();
-            } else if (!window.matchMedia("(min-width: 768px)").matches && isSliderInitialized) {
+            } else if (!window.matchMedia("(min-width: 767px)").matches && isSliderInitialized) {
                 destroySlider();
             }
         });
