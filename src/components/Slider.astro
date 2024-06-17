@@ -25,7 +25,7 @@ let slideClass = `glide ${glideClass}`
     .glide__slides {
         white-space: unset;
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 766px) {
             display: block;
             padding-left: 30px;
             padding-right: 30px;
@@ -62,14 +62,6 @@ let slideClass = `glide ${glideClass}`
                         before: 20,
                         after: 80
                     },
-                },
-                768: {
-                    gap: 20,
-                    perView: 1,
-                    peek: {
-                        before: 20,
-                        after: 20
-                    },
                 }
             }
         };
@@ -78,7 +70,7 @@ let slideClass = `glide ${glideClass}`
         let isSliderInitialized = false;
 
         function initSlider() {
-            if (window.matchMedia("(min-width: 768px)").matches && !isSliderInitialized) {
+            if (window.matchMedia("(min-width: 767px)").matches && !isSliderInitialized) {
                 glideClass.forEach((glide) => {
                     slides.push(new Glide(`.${glide.id}`, options).mount());
                 });
