@@ -6,19 +6,22 @@ const cards = [
         image: "/modernise-applications-image.jpg",
         title: "Modernise Applications with Open-Source Software on Google Cloud",
         text: "Digital transformation is a priority for organisations looking to become more agile. This means replacing older technology stacks with cloud and open-source technologies...",
-        href: "https://itcurated.com/Solving-For-Innovation/infrastructure-and-application-modernisation/modernize-applications-with-open-source-software-on-google-cloud/"
+        href: "https://itcurated.com/Solving-For-Innovation/infrastructure-and-application-modernisation/modernize-applications-with-open-source-software-on-google-cloud/",
+        hoverColor: "#61c34a"
     },
     {
         image: "/unified-data-cloud-image.jpg",
         title: "Unified Data Cloud for Simplicity and Intelligence at Scale",
         text: "A new decision point in data architecture has led industry leaders to choose Google's data cloud to accelerate digital transformation. Dig in further to see...",
-        href: "https://cloud.google.com/resources/idc-datacloud-study?hl=en"
+        href: "https://cloud.google.com/resources/idc-datacloud-study?hl=en",
+        hoverColor: "#61c34a"
     },
     {
         image: "/executive-guide-image.jpg",
         title: "The Executive’s Guide to Generative AI",
         text: "Right now, only 15% of business and IT decision makers feel they have expert knowledge in the area of Generative AI. This comprehensive guide will...",
-        href: "https://inthecloud.withgoogle.com/executive-guide-getting-started-with-generative-ai/dl-cd.html?_ga=2.252977801.-1669785295.1710939471&_gac=1.194250207.1712246871.CjwKCAjwte-vBhBFEiwAQSv_xbsOfgF5cfC1Q6GCUBy1ZjzWEzq1mns2fQndDCAtDKkkxD5sXlhVCRoCEw8QAvD_BwE&_gl=1*bf704e*_ga*MTY2OTc4NTI5NS4xNzEwOTM5NDcx*_ga_WH2QY8WWF5*MTcxNDE1NDY4Mi4xMi4xLjE3MTQxNjA4NjEuMC4wLjA."
+        href: "https://inthecloud.withgoogle.com/executive-guide-getting-started-with-generative-ai/dl-cd.html?_ga=2.252977801.-1669785295.1710939471&_gac=1.194250207.1712246871.CjwKCAjwte-vBhBFEiwAQSv_xbsOfgF5cfC1Q6GCUBy1ZjzWEzq1mns2fQndDCAtDKkkxD5sXlhVCRoCEw8QAvD_BwE&_gl=1*bf704e*_ga*MTY2OTc4NTI5NS4xNzEwOTM5NDcx*_ga_WH2QY8WWF5*MTcxNDE1NDY4Mi4xMi4xLjE3MTQxNjA4NjEuMC4wLjA.",
+        hoverColor: "#61c34a"
     }
 ];
 ---
@@ -27,7 +30,8 @@ const cards = [
     <div class="wrapper">
         <div class="cards">
             {cards.map((card) => (
-                    <Card href={card.href} image={card.image} title={card.title} text={card.text}/>
+                    <Card href={card.href} image={card.image} title={card.title} text={card.text}
+                          hoverColor={card.hoverColor}/>
             ))}
         </div>
     </div>

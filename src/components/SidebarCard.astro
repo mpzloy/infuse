@@ -37,6 +37,7 @@ let cardClasses = `sidebar-card ${cardClass}`;
       min-height: 345px;
       margin-bottom: 60px;
       position: relative;
+      top: unset;
     }
 
     &::before {
@@ -112,7 +113,14 @@ let cardClasses = `sidebar-card ${cardClass}`;
       position: relative;
       z-index: 1;
 
+      &:hover {
+        svg {
+          transform: translateX(5px);
+        }
+      }
+
       svg {
+        transition: transform ease .3s;
         margin-left: 5px;
       }
     }

@@ -14,6 +14,7 @@ let slideClass = `glide ${glideClass}`
                             text={slide.text}
                             image={slide.image}
                             href={slide.href}
+                            hoverColor={slide.hoverColor}
                     />
             ))}
         </div>
@@ -23,6 +24,12 @@ let slideClass = `glide ${glideClass}`
 <style>
     .glide__slides {
         white-space: unset;
+
+        @media screen and (max-width: 768px) {
+            display: block;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
     }
 </style>
 
@@ -30,55 +37,73 @@ let slideClass = `glide ${glideClass}`
     document.addEventListener('DOMContentLoaded', () => {
         const glideClass = document.querySelectorAll('.glide')
 
-        glideClass.forEach((glide) => {
-            const options = {
-                type: 'carousel',
-                perView: 3,
-                gap: 30,
-                autoplay: 5000,
-                hoverpause: true,
-                peek: {
-                    before: 30,
-                    after: 0
+        const options = {
+            type: 'carousel',
+            perView: 2,
+            gap: 30,
+            autoplay: 5000,
+            hoverpause: true,
+            peek: {
+                before: 30,
+                after: 200
+            },
+            breakpoints: {
+                1200: {
+                    perView: 1,
+                    peek: {
+                        before: 30,
+                        after: 150
+                    },
                 },
-                breakpoints: {
-                    1640: {
-                        perView: 2,
-                        peek: {
-                            before: 30,
-                            after: 200
-                        },
+                992: {
+                    gap: 20,
+                    perView: 2,
+                    peek: {
+                        before: 20,
+                        after: 80
                     },
-                    1200: {
-                        perView: 2,
-                        peek: {
-                            before: 30,
-                            after: 50
-                        },
+                },
+                768: {
+                    gap: 20,
+                    perView: 1,
+                    peek: {
+                        before: 20,
+                        after: 20
                     },
-                    992: {
-                        gap: 20,
-                        perView: 1,
-                        peek: {
-                            before: 20,
-                            after: 80
-                        },
-                    },
-                    768: {
-                        gap: 20,
-                        perView: 1,
-                        peek: {
-                            before: 20,
-                            after: 20
-                        },
-                    }
                 }
-            };
-           let slide =  new Glide(`.${glide.id}`, options).mount();
+            }
+        };
 
-            // if(window.innerWidth < 768) {
-            //     slide.destroy();
-            // }
+        let slides = [];
+        let isSliderInitialized = false;
+
+        function initSlider() {
+            if (window.matchMedia("(min-width: 768px)").matches && !isSliderInitialized) {
+                glideClass.forEach((glide) => {
+                    slides.push(new Glide(`.${glide.id}`, options).mount());
+                });
+                isSliderInitialized = true;
+            }
+        }
+
+        function destroySlider() {
+            if (isSliderInitialized) {
+                slides.forEach((slide) => {
+                    slide.destroy();
+                });
+                slides = [];
+                isSliderInitialized = false;
+            }
+        }
+
+        initSlider();
+
+        window.addEventListener('resize', function () {
+            if (window.matchMedia("(min-width: 768px)").matches && !isSliderInitialized) {
+                initSlider();
+            } else if (!window.matchMedia("(min-width: 768px)").matches && isSliderInitialized) {
+                destroySlider();
+            }
         });
     });
 

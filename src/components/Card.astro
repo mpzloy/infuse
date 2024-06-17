@@ -1,5 +1,5 @@
 ---
-const {title, text, image, href} = Astro.props;
+const {title, text, image, href, hoverColor} = Astro.props;
 ---
 
 <a href={href} class="card">
@@ -8,10 +8,15 @@ const {title, text, image, href} = Astro.props;
         <strong>{title}</strong>
         <p>{text}</p>
     </div>
-    <span>Read now <img src="/arrow.svg" alt="Link arrow"></span>
+    <span>Read now
+        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 0L7.41375 1.58625L13.6912 7.875H0V10.125H13.6912L7.41375 16.4137L9 18L18 9L9 0Z"
+                  fill={hoverColor}/>
+        </svg>
+    </span>
 </a>
 
-<style lang="scss">
+<style lang="scss" define:vars={{hoverColor}}>
   .card {
     border: 2px solid transparent;
     border-radius: 10px;
@@ -21,13 +26,17 @@ const {title, text, image, href} = Astro.props;
     min-height: 513px;
     padding-bottom: 30px;
 
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: 768px) {
       min-height: unset;
+      margin-bottom: 48px;
+    }
+
+    @media screen and (max-width: 576px) {
       padding-bottom: 20px;
     }
 
     &:hover {
-      border-color: #61c34a;
+      border-color: var(--hoverColor);
 
       figure {
         padding: 10px 10px 0;
@@ -55,6 +64,10 @@ const {title, text, image, href} = Astro.props;
         display: block;
         margin-top: unset;
         margin-bottom: 20px;
+
+        @media screen and (max-width: 576px) {
+          font-size: 20px;
+        }
       }
 
       p {
@@ -68,8 +81,16 @@ const {title, text, image, href} = Astro.props;
     }
 
     figure {
+      width: 100%;
+      max-width: 393px;
+      height: 240px;
       text-align: center;
       transition: padding ease .3s;
+      margin: 0 auto;
+
+      @media screen and (max-width: 576px) {
+        height: auto;
+      }
 
       img {
         border-radius: 10px;
@@ -83,7 +104,7 @@ const {title, text, image, href} = Astro.props;
       font-weight: 500;
       font-size: 16px;
       line-height: 194%;
-      color: #61c34a;
+      color: var(--hoverColor);
       display: flex;
       align-items: center;
       align-self: flex-end;
@@ -92,7 +113,7 @@ const {title, text, image, href} = Astro.props;
       padding-right: 20px;
       margin-top: auto;
 
-      img {
+      svg {
         margin-left: 7px;
       }
     }
