@@ -2,19 +2,19 @@
 const {title, text, image, href, hoverColor} = Astro.props;
 ---
 
-<a href={href} class="card">
+<div class="card">
     <figure><img src={image} alt={title}></figure>
     <div class="card-component">
         <strong>{title}</strong>
         <p>{text}</p>
     </div>
-    <span>Read now
+    <a href={href} >Read now
         <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 0L7.41375 1.58625L13.6912 7.875H0V10.125H13.6912L7.41375 16.4137L9 18L18 9L9 0Z"
                   fill={hoverColor}/>
         </svg>
-    </span>
-</a>
+    </a>
+</div>
 
 <style lang="scss" define:vars={{hoverColor}}>
   .card {
@@ -42,7 +42,7 @@ const {title, text, image, href, hoverColor} = Astro.props;
         padding: 10px 10px 0;
       }
 
-      span {
+      a {
         visibility: visible;
       }
     }
@@ -99,11 +99,12 @@ const {title, text, image, href, hoverColor} = Astro.props;
       }
     }
 
-    span {
+    a {
       font-family: var(--font-family);
       font-weight: 500;
       font-size: 16px;
       line-height: 194%;
+      text-decoration: none;
       color: var(--hoverColor);
       display: flex;
       align-items: center;
