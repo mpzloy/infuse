@@ -343,6 +343,29 @@ const sixthSliderItems = [
     let lastScrollY = window.scrollY;
     const offset = 670;
 
+    // window.addEventListener('scroll', () => {
+    //     const direction = lastScrollY < window.scrollY ? 'down' : 'up';
+    //     lastScrollY = window.scrollY;
+    //
+    //     for (let i = 0; i < cards.length; i++) {
+    //         const card = cards[i];
+    //         const nextCard = cards[i + 1];
+    //
+    //         if (nextCard && nextCard.offsetTop - offset < window.scrollY) {
+    //             for (let j = 0; j <= i; j++) {
+    //                 cards[j].style.width = `${100 - (i - j + 1) * 5}%`;
+    //             }
+    //         } else if (direction === 'up' && card.offsetTop - offset > window.scrollY) {
+    //             for (let j = i; j < cards.length; j++) {
+    //                 cards[j].style.width = '100%';
+    //                 if (j > 0) {
+    //                     cards[j - 1].style.width = '100%';
+    //                 }
+    //             }
+    //         }
+    //     }
+    // });
+
     window.addEventListener('scroll', () => {
         const direction = lastScrollY < window.scrollY ? 'down' : 'up';
         lastScrollY = window.scrollY;
@@ -353,13 +376,13 @@ const sixthSliderItems = [
 
             if (nextCard && nextCard.offsetTop - offset < window.scrollY) {
                 for (let j = 0; j <= i; j++) {
-                    cards[j].style.width = `${100 - (i - j + 1) * 5}%`;
+                    cards[j].style.transform = `scale(${1 - (i - j + 1) * 0.05})`;
                 }
             } else if (direction === 'up' && card.offsetTop - offset > window.scrollY) {
                 for (let j = i; j < cards.length; j++) {
-                    cards[j].style.width = '100%';
+                    cards[j].style.transform = 'scale(1)';
                     if (j > 0) {
-                        cards[j - 1].style.width = '100%';
+                        cards[j - 1].style.transform = 'scale(1)';
                     }
                 }
             }

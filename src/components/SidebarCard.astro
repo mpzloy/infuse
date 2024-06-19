@@ -26,13 +26,13 @@ let cardClasses = `sidebar-card ${cardClass}`;
     flex-direction: column;
     min-height: 570px;
     overflow: hidden;
-    transition: width ease .3s;
+    transition: width ease .3s, transform ease .3s;
     padding: 44px 30px 30px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
     position: sticky;
-    top: 30px;
+    top: 20px;
 
     @media screen and (max-width: 992px) {
       border-radius: unset;
@@ -57,23 +57,23 @@ let cardClasses = `sidebar-card ${cardClass}`;
 
     @media screen and (min-width: 991px) {
       &:nth-child(2) {
-        top: 40px;
-      }
-
-      &:nth-child(3) {
         top: 50px;
       }
 
+      &:nth-child(3) {
+        top: 80px;
+      }
+
       &:nth-child(4) {
-        top: 60px;
+        top: 110px;
       }
 
       &:nth-child(5) {
-        top: 70px;
+        top: 140px;
       }
 
       &:nth-child(6) {
-        top: 80px;
+        top: 170px;
       }
     }
 
