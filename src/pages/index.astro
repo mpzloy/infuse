@@ -338,12 +338,10 @@ const sixthSliderItems = [
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 
 <script>
-
-
     window.addEventListener('DOMContentLoaded', e => {
         const sliderSections = document.querySelectorAll('.section-sliders-items')
 
-        if (sliderSections.length) {
+        if (sliderSections.length && window.matchMedia("(min-width: 993px)").matches) {
             sliderSections.forEach(section => {
                 section.addEventListener('wheel', sliderSectionCustomScroll)
             })
@@ -353,9 +351,9 @@ const sixthSliderItems = [
         const cards = document.querySelectorAll('.sidebar-card');
         const cardsWrapper = document.querySelector('.section-sliders-aside');
 
-        if (cards.length && cardsWrapper) {
-            cardAnimate(cards, cardsWrapper)
+        if (cards.length && cardsWrapper && window.matchMedia("(min-width: 993px)").matches) {
             setCatPos(cards)
+            cardAnimate(cards, cardsWrapper)
         }
     })
 
@@ -374,47 +372,41 @@ const sixthSliderItems = [
     }
 
      function cardAnimate(cards, cardsWrapper) {
-        const offset = 670;
-        let lastScrollY = window.scrollY;
+        setCardsScale(cards)
 
         window.addEventListener('scroll', () => {
-            const direction = lastScrollY < window.scrollY ? 'down' : 'up';
-            lastScrollY = window.scrollY;
-
-            for (let i = 0; i < cards.length; i++) {
-                const card = cards[i];
-                const nextCard = cards[i + 1];
-
-                if (nextCard && nextCard.offsetTop - offset < window.scrollY) {
-                    window.sliders.forEach(slider => {
-
-                        if (slider.selector.slice(1) === `glide${i + 1}`) {
-
-                        }
-                    })
-
-                    let d = (cardsWrapper.offsetTop - window.scrollY) * .000015
-                    card.style.cssText += `transform: scaleX(${1 + (d * (cards.length - i))})`
-                } else if (direction === 'up' && card.offsetTop - offset > window.scrollY) {
-                    for (let j = i; j < cards.length; j++) {
-                        card.style.cssText += `transform: scaleX(1)`
-
-                        if (j > 0) {
-                            cards[j - 1].style.cssText += `transform: scaleX(1)`
-                        }
-                    }
-                }
-            }
+            setCardsScale(cards)
+            finishCardAnimate(cards, cardsWrapper)
         });
      }
 
      function setCatPos(cards) {
-     console.log(slider.offsetTop)
         cards.forEach((card, index) => {
             const slider = document.querySelector(`${window.sliders[index].selector}`)
-            console.log(card, slider.offsetTop)
             card.dataset.sectionPos = slider.offsetTop
         })
+     }
+
+     function setCardsScale(cards) {
+        if (!cards.length) return
+
+        cards.forEach(card => {
+            if (+card.dataset.sectionPos < window.scrollY) {
+                let delta = (+card.dataset.sectionPos - window.scrollY) * .00009
+                card.style.cssText += `transform: scale(${1 + delta})`
+            } else {
+                card.style.cssText += `transform: scale(1)`
+            }
+        })
+     }
+
+     function finishCardAnimate(cards, cardsWrapper) {
+        const penultimateCard = cards[cards.length - 2]
+        const lastCard = cards[cards.length - 1]
+
+        lastCard.getBoundingClientRect().top < 170
+            ? cardsWrapper.classList.add('finish')
+            : cardsWrapper.classList.remove('finish')
      }
 </script>
 

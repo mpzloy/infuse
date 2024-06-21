@@ -18,3 +18,41 @@
 figure {
   margin: 0;
 }
+
+
+.section-sliders-aside.finish {
+  position: relative;
+
+  .sidebar-card {
+    position: absolute;
+
+    &:nth-child(1) {
+      top: unset;
+      bottom: 150px;
+    }
+
+    &:nth-child(2) {
+      top: unset;
+      bottom: 120px;
+    }
+
+    &:nth-child(3) {
+      top: unset;
+      bottom: 90px;
+    }
+
+    &:nth-child(4) {
+      top: unset;
+      bottom: 60px;
+    }
+
+    &:nth-child(5) {
+      top: unset;
+      bottom: 30px;
+    }
+
+    &:nth-child(6) {
+      position: sticky;
+    }
+  }
+}
