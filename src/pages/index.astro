@@ -338,84 +338,83 @@ const sixthSliderItems = [
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 
 <script>
-    const cards = document.querySelectorAll('.sidebar-card');
 
-    let lastScrollY = window.scrollY;
-    const offset = 670;
 
-    // window.addEventListener('scroll', () => {
-    //     const direction = lastScrollY < window.scrollY ? 'down' : 'up';
-    //     lastScrollY = window.scrollY;
-    //
-    //     for (let i = 0; i < cards.length; i++) {
-    //         const card = cards[i];
-    //         const nextCard = cards[i + 1];
-    //
-    //         if (nextCard && nextCard.offsetTop - offset < window.scrollY) {
-    //             for (let j = 0; j <= i; j++) {
-    //                 cards[j].style.width = `${100 - (i - j + 1) * 5}%`;
-    //             }
-    //         } else if (direction === 'up' && card.offsetTop - offset > window.scrollY) {
-    //             for (let j = i; j < cards.length; j++) {
-    //                 cards[j].style.width = '100%';
-    //                 if (j > 0) {
-    //                     cards[j - 1].style.width = '100%';
-    //                 }
-    //             }
-    //         }
-    //     }
-    // });
+    window.addEventListener('DOMContentLoaded', e => {
+        const sliderSections = document.querySelectorAll('.section-sliders-items')
 
-    window.addEventListener('scroll', () => {
-        const direction = lastScrollY < window.scrollY ? 'down' : 'up';
-        lastScrollY = window.scrollY;
+        if (sliderSections.length) {
+            sliderSections.forEach(section => {
+                section.addEventListener('wheel', sliderSectionCustomScroll)
+            })
+        }
 
-        for (let i = 0; i < cards.length; i++) {
-            const card = cards[i];
-            const nextCard = cards[i + 1];
 
-            if (nextCard && nextCard.offsetTop - offset < window.scrollY) {
-                for (let j = 0; j <= i; j++) {
-                    cards[j].style.transform = `scale(${1 - (i - j + 1) * 0.05})`;
-                }
-            } else if (direction === 'up' && card.offsetTop - offset > window.scrollY) {
-                for (let j = i; j < cards.length; j++) {
-                    cards[j].style.transform = 'scale(1)';
-                    if (j > 0) {
-                        cards[j - 1].style.transform = 'scale(1)';
+        const cards = document.querySelectorAll('.sidebar-card');
+        const cardsWrapper = document.querySelector('.section-sliders-aside');
+
+        if (cards.length && cardsWrapper) {
+            cardAnimate(cards, cardsWrapper)
+            setCatPos(cards)
+        }
+    })
+
+    function sliderSectionCustomScroll(event) {
+        event.preventDefault()
+
+        const parent = event.target.closest('.glide')
+
+        window.sliders.forEach(slider => {
+        const sliderClass = slider.selector.slice(1)
+
+        if (parent.classList.contains(sliderClass)) {
+                event.deltaY > 0 ? slider.go('>') : slider.go('<')
+            }
+        })
+    }
+
+     function cardAnimate(cards, cardsWrapper) {
+        const offset = 670;
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const direction = lastScrollY < window.scrollY ? 'down' : 'up';
+            lastScrollY = window.scrollY;
+
+            for (let i = 0; i < cards.length; i++) {
+                const card = cards[i];
+                const nextCard = cards[i + 1];
+
+                if (nextCard && nextCard.offsetTop - offset < window.scrollY) {
+                    window.sliders.forEach(slider => {
+
+                        if (slider.selector.slice(1) === `glide${i + 1}`) {
+
+                        }
+                    })
+
+                    let d = (cardsWrapper.offsetTop - window.scrollY) * .000015
+                    card.style.cssText += `transform: scaleX(${1 + (d * (cards.length - i))})`
+                } else if (direction === 'up' && card.offsetTop - offset > window.scrollY) {
+                    for (let j = i; j < cards.length; j++) {
+                        card.style.cssText += `transform: scaleX(1)`
+
+                        if (j > 0) {
+                            cards[j - 1].style.cssText += `transform: scaleX(1)`
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+     }
 
-    // window.addEventListener('scroll', () => {
-    //     if (cards[1].offsetTop - 670 < window.scrollY) {
-    //         cards[0].style.width = `95%`;
-    //     }
-    //     if (cards[2].offsetTop - 670 < window.scrollY) {
-    //         cards[0].style.width = `90%`;
-    //         cards[1].style.width = `95%`;
-    //     }
-    //     if (cards[3].offsetTop - 670 < window.scrollY) {
-    //         cards[0].style.width = `85%`;
-    //         cards[1].style.width = `90%`;
-    //         cards[2].style.width = `95%`;
-    //     }
-    //     if (cards[4].offsetTop - 670 < window.scrollY) {
-    //         cards[0].style.width = `80%`;
-    //         cards[1].style.width = `85%`;
-    //         cards[2].style.width = `90%`;
-    //         cards[3].style.width = `95%`;
-    //     }
-    //     if (cards[5].offsetTop - 670 < window.scrollY) {
-    //         cards[0].style.width = `75%`;
-    //         cards[1].style.width = `80%`;
-    //         cards[2].style.width = `85%`;
-    //         cards[3].style.width = `90%`;
-    //         cards[4].style.width = `95%`;
-    //     }
-    //
-    // });
+     function setCatPos(cards) {
+     console.log(slider.offsetTop)
+        cards.forEach((card, index) => {
+            const slider = document.querySelector(`${window.sliders[index].selector}`)
+            console.log(card, slider.offsetTop)
+            card.dataset.sectionPos = slider.offsetTop
+        })
+     }
 </script>
 

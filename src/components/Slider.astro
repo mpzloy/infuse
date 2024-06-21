@@ -66,13 +66,13 @@ let slideClass = `glide ${glideClass}`
             }
         };
 
-        let slides = [];
+        window.sliders = [];
         let isSliderInitialized = false;
 
         function initSlider() {
             if (window.matchMedia("(min-width: 767px)").matches && !isSliderInitialized) {
                 glideClass.forEach((glide) => {
-                    slides.push(new Glide(`.${glide.id}`, options).mount());
+                    window.sliders.push(new Glide(`.${glide.id}`, options).mount());
                 });
                 isSliderInitialized = true;
             }
@@ -80,10 +80,10 @@ let slideClass = `glide ${glideClass}`
 
         function destroySlider() {
             if (isSliderInitialized) {
-                slides.forEach((slide) => {
+                window.sliders.forEach((slide) => {
                     slide.destroy();
                 });
-                slides = [];
+                window.sliders = [];
                 isSliderInitialized = false;
             }
         }
