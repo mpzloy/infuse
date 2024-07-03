@@ -392,7 +392,7 @@ const sixthSliderItems = [
 
         cards.forEach(card => {
             if (+card.dataset.sectionPos < window.scrollY) {
-                let delta = (+card.dataset.sectionPos - window.scrollY) * .00009
+                let delta = (+card.dataset.sectionPos - window.scrollY) * .00005
                 card.style.cssText += `transform: scale(${1 + delta})`
             } else {
                 card.style.cssText += `transform: scale(1)`
